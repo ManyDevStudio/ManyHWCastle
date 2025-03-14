@@ -1,4 +1,4 @@
-package ua.kyrylo.bulyhin.utils;
+package com.dreamcode.utils;
 
 
 import net.md_5.bungee.api.ChatColor;

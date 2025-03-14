@@ -1,9 +1,13 @@
-package ua.kyrylo.bulyhin.loot;
+package com.dreamcode.loot;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.bukkit.Material;
 
 import java.util.List;
 
+@Getter
+@AllArgsConstructor
 public class LootBox {
     private final Material material;
     private final List<Loot> loots;
@@ -39,34 +43,6 @@ public class LootBox {
         if (breaksLeft <= 0) {
             broken = true;
         }
-    }
-
-    public Material getMaterial() {
-        return material;
-    }
-
-    public List<Loot> getLoots() {
-        return loots;
-    }
-
-    public int getBreaksLeft() {
-        return breaksLeft;
-    }
-
-    public double getChance() {
-        return chance;
-    }
-
-    public int getMinLoot() {
-        return minLoot;
-    }
-
-    public int getMaxLoot() {
-        return maxLoot;
-    }
-
-    public boolean isBroken() {
-        return broken;
     }
 
 }

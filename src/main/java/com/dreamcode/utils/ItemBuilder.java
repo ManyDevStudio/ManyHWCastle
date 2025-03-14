@@ -1,4 +1,4 @@
-package ua.kyrylo.bulyhin;
+package com.dreamcode.utils;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
@@ -18,7 +18,6 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import ua.kyrylo.bulyhin.utils.HexColor;
 
 import java.lang.reflect.Field;
 import java.util.*;

@@ -1,12 +1,12 @@
-package ua.kyrylo.bulyhin;
+package com.dreamcode;
 
 import co.aikar.commands.PaperCommandManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
-import ua.kyrylo.bulyhin.command.ManyShulkersCommand;
-import ua.kyrylo.bulyhin.config.Config;
-import ua.kyrylo.bulyhin.listener.BreakListener;
+import com.dreamcode.command.ManyShulkersCommand;
+import com.dreamcode.config.Config;
+import com.dreamcode.listener.BreakListener;
 
 public class ManyShulkers extends JavaPlugin {
     private Config config;

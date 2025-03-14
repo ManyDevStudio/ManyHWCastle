@@ -1,5 +1,3 @@
 name: ManyShulkers
 version: '1.0.0'
-main: ua.kyrylo.bulyhin.ManyShulkers
-api-version: '1.16'
-description: "Developed by https://t.me/kirillbul for ManyDev Studio (14.03.25)."
+main: com.dreamcode.ManyShulkers

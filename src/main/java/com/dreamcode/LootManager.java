@@ -1,12 +1,12 @@
-package ua.kyrylo.bulyhin;
+package com.dreamcode;
 
+import com.dreamcode.loot.Loot;
+import com.dreamcode.loot.LootBox;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.scheduler.BukkitTask;
-import ua.kyrylo.bulyhin.loot.Loot;
-import ua.kyrylo.bulyhin.loot.LootBox;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -58,7 +58,7 @@ public class LootManager {
     public void spawnLootBoxes() {
         List<Location> locationsCopy = new ArrayList<>(plugin.getConfiguration().getLocations());
 
-        for (Location location : getLootBoxes().keySet()) {
+        for (Location location : lootBoxes.keySet()) {
             locationsCopy.remove(location);
         }
 
@@ -132,17 +132,5 @@ public class LootManager {
         }
 
         this.regenerationEnabled = regenerationEnabled;
-    }
-
-    public boolean isRegenerationEnabled() {
-        return regenerationEnabled;
-    }
-
-    public ManyShulkers getPlugin() {
-        return plugin;
-    }
-
-    public Map<Location, LootBox> getLootBoxes() {
-        return lootBoxes;
     }
 }

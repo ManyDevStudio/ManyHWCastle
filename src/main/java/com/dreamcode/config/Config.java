@@ -1,5 +1,10 @@
-package ua.kyrylo.bulyhin.config;
+package com.dreamcode.config;
 
+import com.dreamcode.loot.Loot;
+import com.dreamcode.loot.LootBox;
+import com.dreamcode.utils.HexColor;
+import com.dreamcode.utils.ItemBuilder;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -9,14 +14,11 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
-import ua.kyrylo.bulyhin.ItemBuilder;
-import ua.kyrylo.bulyhin.loot.Loot;
-import ua.kyrylo.bulyhin.loot.LootBox;
-import ua.kyrylo.bulyhin.utils.HexColor;
 
 import java.io.File;
 import java.util.*;
 
+@Getter
 public class Config {
     private final Map<String, Object> configMap = new HashMap<>();
     private final File file;
@@ -135,41 +137,5 @@ public class Config {
                 .save();
 
         return new Loot(chance, itemStack, amountMin, amountMax);
-    }
-
-    public String getMessageStartReload() {
-        return messageStartReload;
-    }
-
-    public String getMessageStopRegeneration() {
-        return messageStopRegeneration;
-    }
-
-    public String getMessageStartRegeneration() {
-        return messageStartRegeneration;
-    }
-
-    public List<Location> getLocations() {
-        return locations;
-    }
-
-    public int getShulkersMax() {
-        return shulkersMax;
-    }
-
-    public int getShulkersMin() {
-        return shulkersMin;
-    }
-
-    public int getTimeRegeneration() {
-        return timeRegeneration;
-    }
-
-    public List<LootBox> getLootBoxes() {
-        return lootBoxes;
-    }
-
-    public String getMessageBreak() {
-        return messageBreak;
     }
 }
