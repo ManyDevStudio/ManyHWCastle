@@ -16,7 +16,10 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Getter
 public class Config {
@@ -42,6 +45,8 @@ public class Config {
 
     private String messageNoPermission;
 
+    private String messageNoCommand;
+
     private int timeRegeneration;
 
     private int shulkersMin;
@@ -58,6 +63,7 @@ public class Config {
         messageStartReload = HexColor.color(yaml.getString("messages.reload"));
         messageBreak = HexColor.color(yaml.getString("messages.break"));
         messageNoPermission = HexColor.color(yaml.getString("messages.no_permission"));
+        messageNoCommand = HexColor.color(yaml.getString("messages.no_command"));
         timeRegeneration = yaml.getInt("shulkers.time-regeneration");
         shulkersMin = yaml.getInt("shulkers.min");
         shulkersMax = yaml.getInt("shulkers.max");

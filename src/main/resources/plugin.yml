@@ -2,3 +2,9 @@ name: ManyShulkers
 version: '1.0.0'
 main: com.dreamcode.ManyShulkers
 api-version: '1.16'
+commands:
+  manyshulkers:
+    usage: /<command>
+permissions:
+  manyshulkers.admin:
+    default: op

@@ -4,6 +4,7 @@ messages:
   reload: "&2Плагин был перезагружен."
   break: "Тебе нужно сломать ещё %amount% раз!"
   no_permission: "&cНет прав на выполнение этой команды."
+  no_command: "&cТакой команды нет."
 
 shulkers:
   time-regeneration: 2 # раз во сколько секунд спавнятся шалкера
