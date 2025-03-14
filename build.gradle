@@ -11,8 +11,8 @@ repositories {
     maven { url = "https://repo.aikar.co/content/groups/aikar/" }
     maven {url = "https://oss.sonatype.org/content/groups/public/"}
     maven {url 'https://repo.papermc.io/repository/maven-public/'}
+    maven { url = uri("https://repo.panda-lang.org/releases/") }
     maven {url = 'https://repo.extendedclip.com/releases/'}
-    maven {url 'https://libraries.minecraft.net/'}
 }
 def targetJavaVersion = 8
 java {
@@ -34,7 +34,7 @@ tasks.withType(JavaCompile).configureEach {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(8) // Paper 1.16.5 требует Java 8
+        languageVersion = JavaLanguageVersion.of(8)
     }
 }
 
@@ -44,10 +44,9 @@ compileJava {
 }
 
 dependencies {
-    implementation "co.aikar:acf-paper:0.5.1-SNAPSHOT"
+     implementation("dev.rollczi:litecommands-bukkit:3.9.7")
     compileOnly 'com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT'
     compileOnly 'me.clip:placeholderapi:2.11.6'
-    implementation 'com.mojang:authlib:1.5.21'
     compileOnly 'org.projectlombok:lombok:1.18.36'
     annotationProcessor 'org.projectlombok:lombok:1.18.36'
 
@@ -60,10 +59,7 @@ test {
 }
 
 shadowJar {
-    relocate 'co.aikar.commands', 'ua.kyrylo.bulyhin.libs.acf.commands'
-    relocate 'co.aikar.locales', 'ua.kyrylo.bulyhin.libs.acf.locales'
-    relocate 'com.mojang.authlib', 'ua.kyrylo.bulyhin.libs.mojang.authlib'
-    relocate 'com.mojang.util', 'ua.kyrylo.bulyhin.libs.mojang.authlib'
+    relocate 'revxrsal.commands', 'com.dreamcode.libs.revxrsal.commands'
 }
 
 build.dependsOn shadowJar

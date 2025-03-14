@@ -40,6 +40,8 @@ public class Config {
 
     private String messageBreak;
 
+    private String messageNoPermission;
+
     private int timeRegeneration;
 
     private int shulkersMin;
@@ -55,6 +57,7 @@ public class Config {
         messageStopRegeneration = HexColor.color(yaml.getString("messages.stop-regeneration"));
         messageStartReload = HexColor.color(yaml.getString("messages.reload"));
         messageBreak = HexColor.color(yaml.getString("messages.break"));
+        messageNoPermission = HexColor.color(yaml.getString("messages.no_permission"));
         timeRegeneration = yaml.getInt("shulkers.time-regeneration");
         shulkersMin = yaml.getInt("shulkers.min");
         shulkersMax = yaml.getInt("shulkers.max");

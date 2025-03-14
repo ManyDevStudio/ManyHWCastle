@@ -1,12 +1,9 @@
 package com.dreamcode.utils;
 
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.properties.Property;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.enchantments.Enchantment;
@@ -19,7 +16,6 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import java.lang.reflect.Field;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -88,33 +84,6 @@ public class ItemBuilder {
             }
 
             return false;
-        }
-
-        public ItemBuild setSkull(String url) {
-            if (!(item.getType() == Material.PLAYER_HEAD)) return this;
-
-            GameProfile profile = new GameProfile(UUID.randomUUID(), null);
-            profile.getProperties().put("textures", new Property("textures", url));
-            Field profileField;
-            try {
-                profileField = meta.getClass().getDeclaredField("profile");
-                profileField.setAccessible(true);
-                profileField.set(meta, profile);
-            } catch (NoSuchFieldException | IllegalArgumentException | IllegalAccessException e1) {
-                System.out.println("Ошибка с головами игроков.");
-            }
-            item.setItemMeta(meta);
-            return this;
-        }
-
-        public ItemBuild setSkull(OfflinePlayer offlinePlayer) {
-            if (item.getType() != Material.PLAYER_HEAD) return this;
-
-            SkullMeta skullMeta = (SkullMeta) meta;
-            skullMeta.setOwningPlayer(offlinePlayer);
-
-            item.setItemMeta(skullMeta);
-            return this;
         }
 
         public ItemBuild setNameFromConfig(Player player, FileConfiguration config, String path) {
