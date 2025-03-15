@@ -45,8 +45,8 @@ public class LootManager {
 
     public void dropLoot(LootBox lootBox, Location location) {
         unregister(location);
+        int amountItems = ThreadLocalRandom.current().nextInt(lootBox.getMinLoot(), lootBox.getMaxLoot() + 1);
 
-        int amountItems = ThreadLocalRandom.current().nextInt((lootBox.getMaxLoot() - lootBox.getMinLoot()) + 1) + lootBox.getMaxLoot();
 
         for (int i = 0; i  < amountItems; i++) {
 
@@ -55,7 +55,7 @@ public class LootManager {
             }
 
             Loot loot = getRandom(lootBox.getLoots());
-            location.getWorld().dropItem(location, loot.getItemStack());
+            location.getWorld().dropItem(location, loot.getRandomItemStack());
         }
     }
 
@@ -67,7 +67,7 @@ public class LootManager {
         int max = plugin.getConfiguration().getShulkersMax();
         int min = plugin.getConfiguration().getShulkersMin();
 
-        int amountShulkers = ThreadLocalRandom.current().nextInt((max - min) + 1) + min;
+        int amountShulkers = ThreadLocalRandom.current().nextInt(min, max + 1);
 
         for (int i = 0; i < amountShulkers; i++) {
             if (locationsCopy.isEmpty()) {

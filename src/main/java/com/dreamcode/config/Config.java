@@ -10,12 +10,14 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -59,6 +61,11 @@ public class Config {
     private List<LootBox> lootBoxes;
 
     public void load() {
+        try {
+            yaml.load(file);
+        } catch (IOException | InvalidConfigurationException e) {
+            throw new RuntimeException(e);
+        }
         messageStartRegeneration = HexColor.color(yaml.getString("messages.start-regeneration"));
         messageStopRegeneration = HexColor.color(yaml.getString("messages.stop-regeneration"));
         messageStartReload = HexColor.color(yaml.getString("messages.reload"));
@@ -146,8 +153,6 @@ public class Config {
                 .setUnbreakableFromConfig(yaml, key + "unbreakable")
                 .setNameFromConfig(yaml, key + ".name")
                 .save();
-        int amount = ThreadLocalRandom.current().nextInt((amountMax - amountMin) + 1) + amountMax;;
-        itemStack.setAmount(amount);
-        return new Loot(chance, itemStack);
+        return new Loot(chance, itemStack, amountMin, amountMax);
     }
 }
