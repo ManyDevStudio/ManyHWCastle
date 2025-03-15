@@ -45,4 +45,8 @@ public class LootBox {
         }
     }
 
+    public LootBox copy() {
+        return new LootBox(this);
+    }
+
 }

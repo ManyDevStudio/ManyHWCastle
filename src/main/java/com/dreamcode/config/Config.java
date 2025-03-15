@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Getter
 public class Config {
@@ -126,6 +127,7 @@ public class Config {
         ConfigurationSection sectionAmount = yaml.getConfigurationSection(key + ".amount");
         int amountMin;
         int amountMax;
+
         if (sectionAmount != null) {
              amountMin = sectionAmount.getInt("min");
              amountMax = sectionAmount.getInt("max");
@@ -133,10 +135,10 @@ public class Config {
             amountMin = 1;
             amountMax = 1;
         }
+
         String materialName = yaml.getString(key + ".material");
         Material material = Material.valueOf(materialName);
         ItemStack itemStack = ItemBuilder.build(new ItemStack(material))
-                .setAmountFromConfig(yaml,key + ".amount")
                 .setEnchantmentsFromConfig(yaml, key  + ".enchantments")
                 .setLoreFromConfig(yaml, key + ".lore")
                 .setPersistentFromConfig(yaml, key + ".pdt")
@@ -144,7 +146,8 @@ public class Config {
                 .setUnbreakableFromConfig(yaml, key + "unbreakable")
                 .setNameFromConfig(yaml, key + ".name")
                 .save();
-
-        return new Loot(chance, itemStack, amountMin, amountMax);
+        int amount = ThreadLocalRandom.current().nextInt((amountMax - amountMin) + 1) + amountMax;;
+        itemStack.setAmount(amount);
+        return new Loot(chance, itemStack);
     }
 }

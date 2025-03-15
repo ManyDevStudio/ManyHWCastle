@@ -11,6 +11,7 @@ import org.bukkit.scheduler.BukkitTask;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
@@ -43,6 +44,8 @@ public class LootManager {
     }
 
     public void dropLoot(LootBox lootBox, Location location) {
+        unregister(location);
+
         int amountItems = ThreadLocalRandom.current().nextInt((lootBox.getMaxLoot() - lootBox.getMinLoot()) + 1) + lootBox.getMaxLoot();
 
         for (int i = 0; i  < amountItems; i++) {
@@ -54,30 +57,24 @@ public class LootManager {
             Loot loot = getRandom(lootBox.getLoots());
             location.getWorld().dropItem(location, loot.getItemStack());
         }
-        unregister(location);
     }
 
     public void spawnLootBoxes() {
         List<Location> locationsCopy = new ArrayList<>(plugin.getConfiguration().getLocations());
-
-        for (Location location : lootBoxes.keySet()) {
-            locationsCopy.remove(location);
-        }
+        locationsCopy.removeAll(lootBoxes.keySet());
 
         List<LootBox> lootBoxesCopy = plugin.getConfiguration().getLootBoxes().stream().map(LootBox::new).collect(Collectors.toList());
         int max = plugin.getConfiguration().getShulkersMax();
         int min = plugin.getConfiguration().getShulkersMin();
+
         int amountShulkers = ThreadLocalRandom.current().nextInt((max - min) + 1) + min;
 
-
-        for (int i = 0; i  < amountShulkers; i++) {
-
+        for (int i = 0; i < amountShulkers; i++) {
             if (locationsCopy.isEmpty()) {
                 break;
             }
-
-            LootBox lootBox = getRandom(lootBoxesCopy);
-            Location randomLocation = locationsCopy.get(ThreadLocalRandom.current().nextInt(locationsCopy.size()));
+            LootBox lootBox = getRandom(lootBoxesCopy).copy();
+            Location randomLocation = locationsCopy.remove(ThreadLocalRandom.current().nextInt(locationsCopy.size()));
             register(lootBox, randomLocation);
         }
     }

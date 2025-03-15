@@ -39,6 +39,7 @@ public class ManyShulkersCommand implements CommandExecutor, TabCompleter {
                 break;
             }
             case "reload": {
+                plugin.getLootManager().setRegenerationEnabled(true);
                 plugin.getConfiguration().load();
                 sender.sendMessage(plugin.getConfiguration().getMessageStartReload());
                 break;

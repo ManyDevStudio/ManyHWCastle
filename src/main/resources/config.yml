@@ -7,29 +7,49 @@ messages:
   no_command: "&cТакой команды нет."
 
 shulkers:
-  time-regeneration: 2 # раз во сколько секунд спавнятся шалкера
-  min: 1 # минимальное кол-во шалкеров при спавне
+  time-regeneration: 50 # раз во сколько секунд спавнятся шалкера
+  min: 4 # минимальное кол-во шалкеров при спавне
   max: 5 # максимальное кол-во шалкеров при спавне
   locations:
     # здесь локации, где они могут спавнится, локации выбераются на рандом, где они будут заспавнены
     1:
       world: "world"
-      x: 100
+      x: 101
+      y: 100
+      z: 100
+    2:
+      world: "world"
+      x: 102
+      y: 100
+      z: 100
+    3:
+      world: "world"
+      x: 103
+      y: 100
+      z: 100
+    4:
+      world: "world"
+      x: 104
+      y: 100
+      z: 100
+    5:
+      world: "world"
+      x: 105
       y: 100
       z: 100
   rarities: # редкости
     default:
-      chance: 60 # шанс на то, что шалкер будет такой категории
+      chance: 50 # шанс на то, что шалкер будет такой категории
       material: "GRAY_SHULKER_BOX"
       amount-breaks: 5 # сколько раз нужно сломать, чтобы выпал дроп и пропал шалкер
       loot: # настройка лута
-        min: 3 # минимальное кол-во выпадающих предметов
+        min: 2 # минимальное кол-во выпадающих предметов
         max: 5 # максимальное кол-во выпадающих предметов
 
         items: # настройка предметов
           1:
-            chance: 50
-            material: "DIAMOND_SWORD"
+            chance: 20
+            material: "OBSIDIAN"
             # далее настройка разных параметров с возможностью использовать и не использовать их
             # amount:
             #  min: 1
@@ -44,23 +64,35 @@ shulkers:
             # itemflags:
             #  - 'HIDE_ENCHANTS'
           2:
-            chance: 30
-            material: "DIAMOND"
-            amount:
-              min: 5
-              max: 8
-          3:
             chance: 20
-            material: "ENCHANTED_GOLDEN_APPLE"
+            material: "DIAMOND"
             amount:
               min: 1
               max: 1
-    epic:
-      chance: 40 # шанс на то, что шалкер будет такой категории
-      material: "BLUE_SHULKER_BOX"
+          3:
+            chance: 20
+            material: "COBBLESTONE"
+            amount:
+              min: 1
+              max: 1
+          4:
+            chance: 20
+            material: "OAK_DOOR"
+            amount:
+              min: 1
+              max: 1
+          5:
+            chance: 20
+            material: "BIRCH_BUTTON"
+            amount:
+              min: 1
+              max: 1
+    legendary:
+      chance: 20 # шанс на то, что шалкер будет такой категории
+      material: "RED_SHULKER_BOX"
       amount-breaks: 10 # сколько раз нужно сломать, чтобы выпал дроп и пропал шалкер
       loot: # настройка лута
-        min: 5 # минимальное кол-во выпадающих предметов
+        min: 1 # минимальное кол-во выпадающих предметов
         max: 7 # максимальное кол-во выпадающих предметов
 
         items: # настройка предметов
@@ -82,25 +114,25 @@ shulkers:
             #  - 'HIDE_ENCHANTS'
           2:
             chance: 30
-            material: "DIAMOND"
+            material: "NETHERITE_AXE"
             amount:
-              min: 5
-              max: 8
+              min: 1
+              max: 1
           3:
             chance: 20
-            material: "ENCHANTED_GOLDEN_APPLE"
+            material: "NETHERITE_SWORD"
             amount:
               min: 1
               max: 1
           4:
             chance: 30
-            material: "GOLD_INGOT"
+            material: "PURPLE_BED"
             amount:
               min: 5
               max: 15
           5:
             chance: 5
-            material: "EXPERIENCE_BOTTLE"
+            material: "RED_BED"
             amount:
               min: 15
               max: 50
