@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ThreadLocalRandom;
 
 @Getter
 public class Config {
@@ -45,8 +44,6 @@ public class Config {
     private boolean explosionEnabled;
 
     private double explosionDamage;
-
-    private double explosionRadiusDamage;
 
     private int timeRegeneration;
 
@@ -93,7 +90,6 @@ public class Config {
 
         explosionEnabled = sectionExplosion.getBoolean("enabled");
         explosionDamage = sectionExplosion.getDouble("damage");
-        explosionRadiusDamage = sectionExplosion.getDouble("radius-damage");
     }
 
     public List<Location> readLocations(ConfigurationSection section) {

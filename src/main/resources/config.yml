@@ -14,7 +14,6 @@ shulkers:
   explosion:
     enabled: true
     damage: 10.0
-    radius-damage: 10.0
   time-regeneration: 50 # раз во сколько секунд спавнятся шалкера
   min: 1 # минимальное кол-во шалкеров при спавне
   max: 5 # максимальное кол-во шалкеров при спавне

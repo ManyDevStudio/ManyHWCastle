@@ -1,5 +1,6 @@
 package com.dreamcode;
 
+import com.dreamcode.config.Config;
 import com.dreamcode.loot.Chanced;
 import com.dreamcode.loot.Loot;
 import com.dreamcode.loot.LootBox;
@@ -7,6 +8,7 @@ import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Particle;
 import org.bukkit.block.Block;
 import org.bukkit.scheduler.BukkitTask;
 
@@ -32,6 +34,10 @@ public class LootManager {
     public void register(LootBox lootBox, Location location) {
         lootBoxes.put(location, lootBox);
         location.getBlock().setType(lootBox.getMaterial());
+
+        if (plugin.getConfiguration().isExplosionEnabled()) {
+            location.createExplosion((float) plugin.getConfiguration().getExplosionDamage(), false, false);
+        }
     }
 
     public void unregister(Location location) {
