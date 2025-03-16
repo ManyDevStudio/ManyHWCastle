@@ -8,7 +8,7 @@ import java.util.List;
 
 @Getter
 @AllArgsConstructor
-public class LootBox {
+public class LootBox implements Chanced {
     private final Material material;
     private final List<Loot> loots;
     private final double chance;

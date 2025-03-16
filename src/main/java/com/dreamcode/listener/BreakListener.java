@@ -2,10 +2,12 @@ package com.dreamcode.listener;
 
 import com.dreamcode.ManyShulkers;
 import com.dreamcode.loot.LootBox;
+import com.dreamcode.utils.ExplosionUtils;
 import lombok.AllArgsConstructor;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -33,6 +35,10 @@ public class BreakListener implements Listener {
 
         if (lootBox.isBroken()) {
             plugin.getLootManager().dropLoot(lootBox, loc);
+
+            if (plugin.getConfiguration().isExplosionEnabled()) {
+                ExplosionUtils.explosion(loc, plugin.getConfiguration().getExplosionRadiusDamage(), plugin.getConfiguration().getExplosionDamage());
+            }
             return;
         }
 

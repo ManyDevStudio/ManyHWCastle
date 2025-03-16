@@ -1,51 +1,58 @@
+# Плагина разработан студией ManyDev
+# ТГК: https://t.me/many_dev
+# ВК: https://vk.com/many_dev
+
 messages:
-  start-regeneration: "&2Регенерация шалкеров была запущена."
-  stop-regeneration: "&2Регенерация шалкеров была остановлена"
-  reload: "&2Плагин был перезагружен."
-  break: "Тебе нужно сломать ещё %amount% раз!"
-  no_permission: "&cНет прав на выполнение этой команды."
-  no_command: "&cТакой команды нет."
+  start-regeneration: "&#C3FBE2» &#FFFFFFРегенерация шалкеров была запущена"
+  stop-regeneration: "&#C3FBE2» &#FFFFFFРегенерация шалкеров была остановлена"
+  reload: "&#C3FBE2» &#FFFFFFПлагин был перезагружен"
+  break: "&#C3FBE2» &#FFFFFFШалкер осталось сломать %amount% раз!"
+  no-permission: "&#C3FBE2» &#FFFFFFНет прав на выполнение этой команды."
+  no-command: "&#C3FBE2» &#FFFFFFТакой команды нет"
 
 shulkers:
+  explosion:
+    enabled: true
+    damage: 10.0
+    radius-damage: 10.0
   time-regeneration: 50 # раз во сколько секунд спавнятся шалкера
-  min: 4 # минимальное кол-во шалкеров при спавне
+  min: 1 # минимальное кол-во шалкеров при спавне
   max: 5 # максимальное кол-во шалкеров при спавне
   locations:
     # здесь локации, где они могут спавнится, локации выбераются на рандом, где они будут заспавнены
     1:
       world: "world"
-      x: 101
-      y: 100
-      z: 100
+      x: 120
+      y: 84
+      z: 37
     2:
       world: "world"
-      x: 102
-      y: 100
-      z: 100
+      x: 129
+      y: 84
+      z: 37
     3:
       world: "world"
-      x: 103
-      y: 100
-      z: 100
+      x: 132
+      y: 84
+      z: 48
     4:
       world: "world"
-      x: 104
-      y: 100
-      z: 100
+      x: 120
+      y: 84
+      z: 50
     5:
       world: "world"
-      x: 105
-      y: 100
-      z: 100
+      x: 122
+      y: 84
+      z: 23
   rarities: # редкости
     default:
-      chance: 50 # шанс на то, что шалкер будет такой категории
+      chance: 60 # шанс на то, что шалкер будет такой категории
       material: "GRAY_SHULKER_BOX"
       amount-breaks: 5 # сколько раз нужно сломать, чтобы выпал дроп и пропал шалкер
       loot: # настройка лута
-        min: 2 # минимальное кол-во выпадающих предметов
-        max: 5 # максимальное кол-во выпадающих предметов
-
+        min: 5 # минимальное кол-во выпадающих предметов
+        max: 12 # максимальное кол-во выпадающих предметов
         items: # настройка предметов
           1:
             chance: 20
@@ -67,42 +74,48 @@ shulkers:
             chance: 20
             material: "DIAMOND"
             amount:
-              min: 1
-              max: 1
+              min: 5
+              max: 30
           3:
             chance: 20
-            material: "COBBLESTONE"
+            material: "DIAMOND_SWORD"
+            name: '&fManyDev бустит'
+            lore:
+              - ''
+              - '&fТГК: https://t.me/many_dev'
+              - '&fВК: https://vk.com/many_dev'
+            enchantments:
+              - 'DAMAGE_ALL:5'
             amount:
               min: 1
               max: 1
           4:
             chance: 20
-            material: "OAK_DOOR"
+            material: "EXPERIENCE_BOTTLE"
             amount:
-              min: 1
-              max: 1
+              min: 5
+              max: 50
           5:
             chance: 20
-            material: "BIRCH_BUTTON"
+            material: "GOLD_INGOT"
             amount:
-              min: 1
-              max: 1
-    legendary:
-      chance: 20 # шанс на то, что шалкер будет такой категории
+              min: 8
+              max: 50
+    rare:
+      chance: 40 # шанс на то, что шалкер будет такой категории
       material: "RED_SHULKER_BOX"
       amount-breaks: 10 # сколько раз нужно сломать, чтобы выпал дроп и пропал шалкер
       loot: # настройка лута
-        min: 1 # минимальное кол-во выпадающих предметов
-        max: 7 # максимальное кол-во выпадающих предметов
-
+        min: 3 # минимальное кол-во выпадающих предметов
+        max: 22 # максимальное кол-во выпадающих предметов
         items: # настройка предметов
           1:
-            chance: 15
-            material: "DIAMOND_SWORD"
+            chance: 25
+            material: "NETHERITE_SCRAP"
             # далее настройка разных параметров с возможностью использовать и не использовать их
-            # amount:
-            #  min: 1
-            #  max: 1
+            amount:
+              min: 1
+              max: 5
             # name: ''
             # lore:
             #  - ''
@@ -113,7 +126,7 @@ shulkers:
             # itemflags:
             #  - 'HIDE_ENCHANTS'
           2:
-            chance: 30
+            chance: 20
             material: "NETHERITE_AXE"
             amount:
               min: 1
@@ -125,14 +138,21 @@ shulkers:
               min: 1
               max: 1
           4:
-            chance: 30
-            material: "PURPLE_BED"
+            chance: 20
+            material: "NETHERITE_SWORD"
+            name: '&fDreamCode бустит'
+            lore:
+              - ''
+              - '&fТГК: https://t.me/dreamcode_studio'
+              - '&fВК: https://vk.com/dmcode'
+            enchantments:
+              - 'DAMAGE_ALL:5'
             amount:
-              min: 5
-              max: 15
+              min: 1
+              max: 1
           5:
-            chance: 5
-            material: "RED_BED"
+            chance: 20
+            material: "GOLD_INGOT"
             amount:
-              min: 15
-              max: 50
+              min: 3
+              max: 20

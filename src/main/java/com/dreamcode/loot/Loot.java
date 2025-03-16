@@ -8,7 +8,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 @Getter
 @AllArgsConstructor
-public class Loot {
+public class Loot implements Chanced {
     private final double chance;
     private final ItemStack itemStack;
     private final int amountMin;

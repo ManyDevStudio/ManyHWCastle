@@ -1,7 +1,9 @@
 package com.dreamcode;
 
+import com.dreamcode.loot.Chanced;
 import com.dreamcode.loot.Loot;
 import com.dreamcode.loot.LootBox;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -11,11 +13,11 @@ import org.bukkit.scheduler.BukkitTask;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
+@Getter
 public class LootManager {
     private final Map<Location, LootBox> lootBoxes = new ConcurrentHashMap<>();
     private final ManyShulkers plugin;
@@ -54,7 +56,7 @@ public class LootManager {
                 break;
             }
 
-            Loot loot = getRandom(lootBox.getLoots());
+            Loot loot = (Loot) getRandom(lootBox.getLoots());
             location.getWorld().dropItem(location, loot.getRandomItemStack());
         }
     }
@@ -73,18 +75,18 @@ public class LootManager {
             if (locationsCopy.isEmpty()) {
                 break;
             }
-            LootBox lootBox = getRandom(lootBoxesCopy).copy();
+            LootBox lootBox = ((LootBox) getRandom(lootBoxesCopy)).copy();
             Location randomLocation = locationsCopy.remove(ThreadLocalRandom.current().nextInt(locationsCopy.size()));
             register(lootBox, randomLocation);
         }
     }
 
-    private <T> T getRandom(List<T> items) {
+    private Chanced getRandom(List<? extends Chanced> items) {
         int rand = ThreadLocalRandom.current().nextInt(101);
         double percentTotal = 0;
 
-        for (T item : items) {
-            percentTotal += getChanceFromItem(item);
+        for (Chanced item : items) {
+            percentTotal += item.getChance();
 
             if (rand < percentTotal) {
                 return item;
@@ -93,16 +95,6 @@ public class LootManager {
 
         return items.get(0);
     }
-
-    private double getChanceFromItem(Object item) {
-        if (item instanceof LootBox) {
-            return ((LootBox) item).getChance();
-        } else if (item instanceof Loot) {
-            return ((Loot) item).getChance();
-        }
-        throw new IllegalArgumentException("Unsupported item type");
-    }
-
     public LootBox getLootBoxOrNull(Block block) {
         return getLootBoxOrNull(block.getLocation());
     }

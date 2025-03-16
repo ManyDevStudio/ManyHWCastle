@@ -30,14 +30,6 @@ public class Config {
     private final File file;
     private final FileConfiguration yaml;
 
-    public Config (JavaPlugin plugin) {
-        file = new File(plugin.getDataFolder(), "config.yml");
-        if (!file.exists()) {
-            plugin.saveResource("config.yml", false);
-        }
-        yaml = YamlConfiguration.loadConfiguration(file);
-    }
-
     private String messageStartRegeneration;
 
     private String messageStopRegeneration;
@@ -50,6 +42,12 @@ public class Config {
 
     private String messageNoCommand;
 
+    private boolean explosionEnabled;
+
+    private double explosionDamage;
+
+    private double explosionRadiusDamage;
+
     private int timeRegeneration;
 
     private int shulkersMin;
@@ -60,23 +58,42 @@ public class Config {
 
     private List<LootBox> lootBoxes;
 
+    public Config (JavaPlugin plugin) {
+        file = new File(plugin.getDataFolder(), "config.yml");
+        if (!file.exists()) {
+            plugin.saveResource("config.yml", false);
+        }
+        yaml = YamlConfiguration.loadConfiguration(file);
+    }
+
     public void load() {
         try {
             yaml.load(file);
         } catch (IOException | InvalidConfigurationException e) {
             throw new RuntimeException(e);
         }
-        messageStartRegeneration = HexColor.color(yaml.getString("messages.start-regeneration"));
-        messageStopRegeneration = HexColor.color(yaml.getString("messages.stop-regeneration"));
-        messageStartReload = HexColor.color(yaml.getString("messages.reload"));
-        messageBreak = HexColor.color(yaml.getString("messages.break"));
-        messageNoPermission = HexColor.color(yaml.getString("messages.no_permission"));
-        messageNoCommand = HexColor.color(yaml.getString("messages.no_command"));
-        timeRegeneration = yaml.getInt("shulkers.time-regeneration");
-        shulkersMin = yaml.getInt("shulkers.min");
-        shulkersMax = yaml.getInt("shulkers.max");
-        locations = readLocations(yaml.getConfigurationSection("shulkers.locations"));
-        lootBoxes = readLootBoxes(yaml.getConfigurationSection("shulkers.rarities"));
+        ConfigurationSection sectionMessages = yaml.getConfigurationSection("messages");
+
+        messageStartRegeneration = HexColor.color(sectionMessages.getString("start-regeneration"));
+        messageStopRegeneration = HexColor.color(sectionMessages.getString("stop-regeneration"));
+        messageStartReload = HexColor.color(sectionMessages.getString("reload"));
+        messageBreak = HexColor.color(sectionMessages.getString("break"));
+        messageNoPermission = HexColor.color(sectionMessages.getString("no-permission"));
+        messageNoCommand = HexColor.color(sectionMessages.getString("no-command"));
+
+        ConfigurationSection sectionShulkers = yaml.getConfigurationSection("shulkers");
+
+        shulkersMin = sectionShulkers.getInt("min");
+        shulkersMax = sectionShulkers.getInt("max");
+        timeRegeneration = sectionShulkers.getInt("time-regeneration");
+        locations = readLocations(sectionShulkers.getConfigurationSection("locations"));
+        lootBoxes = readLootBoxes(sectionShulkers.getConfigurationSection("rarities"));
+
+        ConfigurationSection sectionExplosion = sectionShulkers.getConfigurationSection("explosion");
+
+        explosionEnabled = sectionExplosion.getBoolean("enabled");
+        explosionDamage = sectionExplosion.getDouble("damage");
+        explosionRadiusDamage = sectionExplosion.getDouble("radius-damage");
     }
 
     public List<Location> readLocations(ConfigurationSection section) {
