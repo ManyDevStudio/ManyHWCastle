@@ -62,25 +62,4 @@ public class BreakListener implements Listener {
 
         event.setCancelled(true);
     }
-
-    @EventHandler
-    public void onExplosion(BlockExplodeEvent event) {
-        List<Block> lootBoxes = new ArrayList<>();
-
-        for (Block block : event.blockList()) {
-
-            if (block == null) {
-                continue;
-            }
-
-            Location loc = block.getLocation();
-            LootBox lootBox = plugin.getLootManager().getLootBoxOrNull(loc);
-
-            if (lootBox != null) {
-                lootBoxes.add(block);
-            }
-        }
-
-        event.blockList().removeAll(lootBoxes);
-    }
 }
