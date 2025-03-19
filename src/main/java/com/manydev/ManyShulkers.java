@@ -1,8 +1,8 @@
-package com.dreamcode;
+package com.manydev;
 
-import com.dreamcode.command.ManyShulkersCommand;
-import com.dreamcode.config.Config;
-import com.dreamcode.listener.BreakListener;
+import com.manydev.command.ManyShulkersCommand;
+import com.manydev.config.Config;
+import com.manydev.listener.BreakListener;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;

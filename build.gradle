@@ -3,7 +3,7 @@ plugins {
     id 'java'
 }
 
-group = 'ua.kyrylo.bulyhin'
+group = 'com.manydev'
 version = '1.0'
 
 repositories {

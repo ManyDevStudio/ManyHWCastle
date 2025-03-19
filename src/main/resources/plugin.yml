@@ -1,6 +1,6 @@
 name: ManyShulkers
 version: '1.0.0'
-main: com.dreamcode.ManyShulkers
+main: com.manydev.ManyShulkers
 api-version: '1.16'
 commands:
   manyshulkers:

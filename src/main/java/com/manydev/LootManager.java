@@ -1,14 +1,12 @@
-package com.dreamcode;
+package com.manydev;
 
-import com.dreamcode.config.Config;
-import com.dreamcode.loot.Chanced;
-import com.dreamcode.loot.Loot;
-import com.dreamcode.loot.LootBox;
+import com.manydev.loot.Chanced;
+import com.manydev.loot.Loot;
+import com.manydev.loot.LootBox;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.Particle;
 import org.bukkit.block.Block;
 import org.bukkit.scheduler.BukkitTask;
 
