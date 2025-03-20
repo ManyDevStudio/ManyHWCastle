@@ -13,7 +13,7 @@ repositories {
     maven {url 'https://repo.papermc.io/repository/maven-public/'}
     maven {url = 'https://repo.extendedclip.com/releases/'}
 }
-def targetJavaVersion = 8
+def targetJavaVersion = 16
 java {
     def javaVersion = JavaVersion.toVersion(targetJavaVersion)
     sourceCompatibility = javaVersion
@@ -31,11 +31,11 @@ tasks.withType(JavaCompile).configureEach {
     }
 }
 
-java {
+/* java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(8)
     }
-}
+} */
 
 dependencies {
     compileOnly 'com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT'
@@ -47,8 +47,8 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
-test {
+/*test {
     useJUnitPlatform()
-}
+} */
 
 build.dependsOn shadowJar

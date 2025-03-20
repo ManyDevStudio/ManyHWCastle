@@ -20,11 +20,11 @@ import java.util.stream.Collectors;
 @Getter
 public class LootManager {
     private final Map<Location, LootBox> lootBoxes = new ConcurrentHashMap<>();
-    private final ManyShulkers plugin;
+    private final ManyCastle plugin;
     private boolean regenerationEnabled = true;
     private BukkitTask task;
 
-    public LootManager(ManyShulkers plugin) {
+    public LootManager(ManyCastle plugin) {
         this.plugin = plugin;
         runTask();
     }
